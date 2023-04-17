@@ -176,6 +176,7 @@ Circle *get_circle() {
     }
     Point *p = create_point(x,y);
     Circle *circle = create_circle(p, radius);
+
     if (circle == NULL) {
         printf("Error: Failed to allocate memory\n");
         exit(1);

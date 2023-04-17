@@ -104,9 +104,9 @@ void print_rectangle(Rectangle * rectangle)
 {
     printf("RECTANGLE %d %d %d %d %d %d %d %d\n",
            rectangle->top_left->pos_x, rectangle->top_left->pos_y,
-           rectangle->top_left->pos_x + rectangle->height, rectangle->top_left->pos_y,
-           rectangle->top_left->pos_x, rectangle->top_left->pos_y + rectangle->width,
-           rectangle->top_left->pos_x + rectangle->height, rectangle->top_left->pos_y + rectangle->width);
+           rectangle->top_left->pos_x + rectangle->width, rectangle->top_left->pos_y,
+           rectangle->top_left->pos_x, rectangle->top_left->pos_y + rectangle->height,
+           rectangle->top_left->pos_x + rectangle->width, rectangle->top_left->pos_y + rectangle->height);
 }
 
 // CIRCLE DEFINITION
@@ -140,7 +140,7 @@ void print_circle(Circle * circle)
 
 Polygon *create_polygon(int n)
 {
-    Polygon *polygon = malloc(sizeof(Polygon));
+    Polygon *polygon = (Polygon*) malloc(sizeof(Polygon));
     if (polygon == NULL) {
         return NULL;
     }
@@ -170,6 +170,7 @@ void delete_polygon(Polygon * polygon)
     free(polygon->points);
     polygon->points = NULL;
     free(polygon);
+    polygon = NULL;
 }
 
 void print_polygon(Polygon * polygon)
@@ -184,7 +185,7 @@ void print_polygon(Polygon * polygon)
     }
 }
 
-// CREAT EMPTY SHAPE
+// CREAT EMPTY SHAPE1
 Shape *create_empty_shape(SHAPE_TYPE shape_type)
 {
     Shape *shp = (Shape *) malloc(sizeof(Shape));
@@ -285,4 +286,22 @@ void delete_shape(Shape * shape)
 {
     free(shape);
     shape = NULL;
+}
+
+// SHAPE LIST
+Shape **create_shape_list()
+{
+    Shape **shape_list = (Shape*) malloc(sizeof(Shape));
+    if (shape_list == NULL) {
+        printf("Error: Failed to allocate memory for shape list.\n");
+        return NULL;
+    }
+    return shape_list;
+}
+
+void update_shape_list(Shape **shape_list, Shape *shape)
+{
+    shape_list = (Shape*) realloc(shape_list, sizeof(shape_list)+sizeof(Shape));
+    shape_list[];
+    return shape_list;
 }
