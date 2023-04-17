@@ -150,7 +150,6 @@ Polygon *create_polygon(int n)
         free(polygon);
         return NULL;
     }
-
     polygon->n = n;
     polygon->points = points;
 
@@ -184,6 +183,7 @@ void print_polygon(Polygon * polygon)
             printf("NULL\n");
         }
     }
+    printf("\n");
 }
 
 // CREAT EMPTY SHAPE1
@@ -262,26 +262,32 @@ void print_shape(Shape * shape)
         case POINT:
             print_point(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         case LINE:
             print_line(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         case SQUARE:
             print_square(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         case RECTANGLE:
             print_rectangle(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         case CIRCLE:
             print_circle(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         case POLYGON:
             print_polygon(shape->ptrShape);
             printf("ID: %d\n", shape->id);
+            printf("\n");
             break;
         default:
             printf("Error: Invalid shape ID\n");
