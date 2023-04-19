@@ -4,68 +4,33 @@
 
 int main() {
     LIST l = NULL;
-    Shape * f1= create_point_shape(&l);
-    print_shape(f1);
+    Shape * s1= create_point_shape(&l);
+    print_shape(s1);
 
-    Shape * f2 = create_line_shape(&l);
-    print_shape(f2);
+    Shape * s2 = create_line_shape(&l);
+    print_shape(s2);
 
-    Shape * f3 = create_square_shape(&l);
-    print_shape(f3);
+    Shape * s3 = create_square_shape(&l);
+    print_shape(s3);
 
-    Shape * f4 = create_rectangle_shape(&l);
-    print_shape(f4);
+    Shape * s4 = create_rectangle_shape(&l);
+    print_shape(s4);
 
-    Shape * f5 = create_circle_shape(&l);
-    print_shape(f5);
+    Shape * s5 = create_circle_shape(&l);
+    print_shape(s5);
 
-    Shape * f6 = create_polygon_shape(&l);
-    print_shape(f6);
+    Shape * s6 = create_polygon_shape(&l);
+    print_shape(s6);
 
 
     print_list(l);
 
-    delete_shape(f1);
-    delete_shape(f2);
-    delete_shape(f3);
-    delete_shape(f4);
-    delete_shape(f5);
-    delete_shape(f6);
+    delete_shape(s1);
+    delete_shape(s2);
+    delete_shape(s3);
+    delete_shape(s4);
+    delete_shape(s5);
+    delete_shape(s6);
 
     return 0;
 }
-
-
-
-/*// Get a point from the user and print it
-Point * point = get_point();
-print_point(point);
-
-// Get a line from the user and print it
-Line *line = get_line();
-print_line(line);
-
-// Get a square from the user and print it
-Square *square = get_square();
-print_square(square);
-
-// Get a rectangle from the user and print it
-Rectangle *rectangle = get_rectangle();
-print_rectangle(rectangle);
-
-// Get a circle from the user and print it
-Circle *circle = get_circle();
-print_circle(circle);
-
-// Get a polygon from the user and print it
-Polygon *polygon = get_polygon();
-print_polygon(polygon);
-
-// Clean up memory
-delete_point(point);
-delete_line(line);
-delete_square(square);
-delete_rectangle(rectangle);
-delete_circle(circle);
-delete_polygon(polygon);*/
-

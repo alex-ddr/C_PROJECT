@@ -10,9 +10,9 @@ Point *get_point() {
     char input[256];
     int x, y;
 
+    printf("Point :");
     fgets(input, sizeof(input), stdin);
 
-    // Count the number of spaces in the input
     int num_spaces = 0;
     for (int i = 0; i < strlen(input); i++) {
         if (input[i] == ' ') {
@@ -20,13 +20,11 @@ Point *get_point() {
         }
     }
 
-    // Check that there is exactly one space in the input
     if (num_spaces != 1) {
         printf("Error: Invalid input format\n");
         return NULL;
     }
 
-    // Parse the input and create a point
     if (sscanf(input, "%d %d", &x, &y) != 2) {
         printf("Error: Invalid input format\n");
         return NULL;
@@ -46,9 +44,9 @@ Line *get_line() {
     char input[256];
     int x1, y1, x2, y2;
 
+    printf("Line :");
     fgets(input, sizeof(input), stdin);
 
-    // Count the number of spaces in the input
     int num_spaces = 0;
     for (int i = 0; i < strlen(input); i++) {
         if (input[i] == ' ') {
@@ -56,13 +54,11 @@ Line *get_line() {
         }
     }
 
-    // Check that there is exactly one space in the input
     if (num_spaces != 3) {
         printf("Error: Invalid input format\n");
         return NULL;
     }
 
-    // Parse the input and create a line
     if (sscanf(input, "%d %d %d %d", &x1, &y1, &x2, &y2) != 4) {
         printf("Error: Invalid input format\n");
         return NULL;
@@ -85,9 +81,9 @@ Square *get_square() {
     char input[256];
     int x, y, l;
 
+    printf("Square :");
     fgets(input, sizeof(input), stdin);
 
-    // Count the number of spaces in the input
     int num_spaces = 0;
     for (int i = 0; i < strlen(input); i++) {
         if (input[i] == ' ') {
@@ -101,7 +97,6 @@ Square *get_square() {
         return NULL;
     }
 
-    // Parse the input and create a point
     if (sscanf(input, "%d %d %d", &x, &y, &l) != 3) {
         printf("Error: Invalid input format\n");
         return NULL;
@@ -120,9 +115,9 @@ Rectangle *get_rectangle() {
     char input[256];
     int x, y, width, height;
 
+    printf("Rectangle :");
     fgets(input, sizeof(input), stdin);
 
-    // Count the number of spaces in the input
     int num_spaces = 0;
     for (int i = 0; i < strlen(input); i++) {
         if (input[i] == ' ') {
@@ -130,13 +125,11 @@ Rectangle *get_rectangle() {
         }
     }
 
-    // Check that there is exactly one space in the input
     if (num_spaces != 3) {
         printf("Error: Invalid input format\n");
         return NULL;
     }
 
-    // Parse the input and create a point
     if (sscanf(input, "%d %d %d %d", &x, &y, &width, &height) != 4) {
         printf("Error: Invalid input format\n");
         return NULL;
@@ -155,9 +148,9 @@ Circle *get_circle() {
     char input[256];
     int x, y, radius;
 
+    printf("Circle :");
     fgets(input, sizeof(input), stdin);
 
-    // Count the number of spaces in the input
     int num_spaces = 0;
     for (int i = 0; i < strlen(input); i++) {
         if (input[i] == ' ') {
@@ -165,13 +158,11 @@ Circle *get_circle() {
         }
     }
 
-    // Check that there is exactly one space in the input
     if (num_spaces != 2) {
         printf("Error: Invalid input format\n");
         return NULL;
     }
 
-    // Parse the input and create a point
     if (sscanf(input, "%d %d %d", &x, &y, &radius) != 3) {
         printf("Error: Invalid input format\n");
         return NULL;
@@ -262,7 +253,7 @@ void print_list(LIST l)
         NODE * currentNode = l;
         while (currentNode->succ != NULL)
         {
-            switch (currentNode->shape.shape_type) { // changer shape en shape_type
+            switch (currentNode->shape.shape_type) { // change shape en shape_type
                 case POINT:
                     strcpy(str, "POINT");
                     break;
