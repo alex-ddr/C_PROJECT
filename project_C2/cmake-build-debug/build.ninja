@@ -55,29 +55,29 @@ build CMakeFiles/project_C2.dir/main.c.obj: C_COMPILER__project_C2_Debug C$:/Use
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
 
-build CMakeFiles/project_C2.dir/shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/shapes.c || cmake_object_order_depends_target_project_C2
-  DEP_FILE = CMakeFiles\project_C2.dir\shapes.c.obj.d
+build CMakeFiles/project_C2.dir/shapes/shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/shapes/shapes.c || cmake_object_order_depends_target_project_C2
+  DEP_FILE = CMakeFiles\project_C2.dir\shapes\shapes.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
-  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
+  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\shapes
 
-build CMakeFiles/project_C2.dir/id.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/id.c || cmake_object_order_depends_target_project_C2
-  DEP_FILE = CMakeFiles\project_C2.dir\id.c.obj.d
+build CMakeFiles/project_C2.dir/id/id.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/id/id.c || cmake_object_order_depends_target_project_C2
+  DEP_FILE = CMakeFiles\project_C2.dir\id\id.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
-  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
+  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\id
 
-build CMakeFiles/project_C2.dir/functions_shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/functions_shapes.c || cmake_object_order_depends_target_project_C2
-  DEP_FILE = CMakeFiles\project_C2.dir\functions_shapes.c.obj.d
+build CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/functions_shapes/functions_shapes.c || cmake_object_order_depends_target_project_C2
+  DEP_FILE = CMakeFiles\project_C2.dir\functions_shapes\functions_shapes.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
-  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
+  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\functions_shapes
 
-build CMakeFiles/project_C2.dir/menu.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/menu.c || cmake_object_order_depends_target_project_C2
-  DEP_FILE = CMakeFiles\project_C2.dir\menu.c.obj.d
+build CMakeFiles/project_C2.dir/menu/menu.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/Project_C/menu/menu.c || cmake_object_order_depends_target_project_C2
+  DEP_FILE = CMakeFiles\project_C2.dir\menu\menu.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
-  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
+  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\menu
 
 
 # =============================================================================
@@ -87,7 +87,7 @@ build CMakeFiles/project_C2.dir/menu.c.obj: C_COMPILER__project_C2_Debug C$:/Use
 #############################################
 # Link the executable project_C2.exe
 
-build project_C2.exe: C_EXECUTABLE_LINKER__project_C2_Debug CMakeFiles/project_C2.dir/main.c.obj CMakeFiles/project_C2.dir/shapes.c.obj CMakeFiles/project_C2.dir/id.c.obj CMakeFiles/project_C2.dir/functions_shapes.c.obj CMakeFiles/project_C2.dir/menu.c.obj
+build project_C2.exe: C_EXECUTABLE_LINKER__project_C2_Debug CMakeFiles/project_C2.dir/main.c.obj CMakeFiles/project_C2.dir/shapes/shapes.c.obj CMakeFiles/project_C2.dir/id/id.c.obj CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj CMakeFiles/project_C2.dir/menu/menu.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\project_C2.dir

@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "shapes.h"
-#include "functions_shapes.h"
-#include "menu.h"
+#include "shapes/shapes.h"
+#include "functions_shapes/functions_shapes.h"
+#include "menu/menu.h"
 int main() {
     LIST l = NULL;
     while (1) {

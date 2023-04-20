@@ -3,4 +3,4 @@ project(project_C2 C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(project_C2 main.c shapes.c shapes.h id.c id.h functions_shapes.c functions_shapes.h menu.c menu.h)
+add_executable(project_C2 main.c shapes/shapes.c shapes/shapes.h id/id.c id/id.h functions_shapes/functions_shapes.c functions_shapes/functions_shapes.h menu/menu.c menu/menu.h )
