@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/sweis/CLionProjects/project_C2/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/sweis/CLionProjects/project_C3/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target project_C2
 
@@ -49,41 +49,47 @@ cmake_ninja_workdir = C$:/Users/sweis/CLionProjects/project_C2/cmake-build-debug
 
 build cmake_object_order_depends_target_project_C2: phony || CMakeFiles/project_C2.dir
 
-build CMakeFiles/project_C2.dir/main.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/main.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/main.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/main.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\main.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir
 
-build CMakeFiles/project_C2.dir/shapes/shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/shapes/shapes.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/shapes/shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/shapes/shapes.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\shapes\shapes.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\shapes
 
-build CMakeFiles/project_C2.dir/id/id.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/id/id.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/id/id.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/id/id.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\id\id.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\id
 
-build CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/functions_shapes/functions_shapes.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/functions_shapes/functions_shapes.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\functions_shapes\functions_shapes.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\functions_shapes
 
-build CMakeFiles/project_C2.dir/area/area.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/area/area.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/area/area.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/area/area.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\area\area.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\area
 
-build CMakeFiles/project_C2.dir/pixel/pixel.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C2/pixel/pixel.c || cmake_object_order_depends_target_project_C2
+build CMakeFiles/project_C2.dir/pixel/pixel.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/pixel/pixel.c || cmake_object_order_depends_target_project_C2
   DEP_FILE = CMakeFiles\project_C2.dir\pixel\pixel.c.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu2x
   OBJECT_DIR = CMakeFiles\project_C2.dir
   OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\pixel
+
+build CMakeFiles/project_C2.dir/menu/menu.c.obj: C_COMPILER__project_C2_Debug C$:/Users/sweis/CLionProjects/project_C3/menu/menu.c || cmake_object_order_depends_target_project_C2
+  DEP_FILE = CMakeFiles\project_C2.dir\menu\menu.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu2x
+  OBJECT_DIR = CMakeFiles\project_C2.dir
+  OBJECT_FILE_DIR = CMakeFiles\project_C2.dir\menu
 
 
 # =============================================================================
@@ -93,7 +99,7 @@ build CMakeFiles/project_C2.dir/pixel/pixel.c.obj: C_COMPILER__project_C2_Debug 
 #############################################
 # Link the executable project_C2.exe
 
-build project_C2.exe: C_EXECUTABLE_LINKER__project_C2_Debug CMakeFiles/project_C2.dir/main.c.obj CMakeFiles/project_C2.dir/shapes/shapes.c.obj CMakeFiles/project_C2.dir/id/id.c.obj CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj CMakeFiles/project_C2.dir/area/area.c.obj CMakeFiles/project_C2.dir/pixel/pixel.c.obj
+build project_C2.exe: C_EXECUTABLE_LINKER__project_C2_Debug CMakeFiles/project_C2.dir/main.c.obj CMakeFiles/project_C2.dir/shapes/shapes.c.obj CMakeFiles/project_C2.dir/id/id.c.obj CMakeFiles/project_C2.dir/functions_shapes/functions_shapes.c.obj CMakeFiles/project_C2.dir/area/area.c.obj CMakeFiles/project_C2.dir/pixel/pixel.c.obj CMakeFiles/project_C2.dir/menu/menu.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\project_C2.dir
@@ -108,7 +114,7 @@ build project_C2.exe: C_EXECUTABLE_LINKER__project_C2_Debug CMakeFiles/project_C
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\sweis\CLionProjects\project_C2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\sweis\CLionProjects\project_C3\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -119,7 +125,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\sweis\CLionProjects\project_C2\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\sweis\CLionProjects\project_C2 -BC:\Users\sweis\CLionProjects\project_C2\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\sweis\CLionProjects\project_C3\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\sweis\CLionProjects\project_C3 -BC:\Users\sweis\CLionProjects\project_C3\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -137,7 +143,7 @@ build project_C2: phony project_C2.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/sweis/CLionProjects/project_C2/cmake-build-debug
+# Folder: C:/Users/sweis/CLionProjects/project_C3/cmake-build-debug
 
 build all: phony project_C2.exe
 
@@ -148,14 +154,14 @@ build all: phony project_C2.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/sweis/CLionProjects/project_C2/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/sweis/CLionProjects/project_C3/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/sweis/CLionProjects/project_C2/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.1.1/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/sweis/CLionProjects/project_C3/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
 
 
 #############################################

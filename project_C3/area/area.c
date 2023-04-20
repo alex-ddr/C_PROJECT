@@ -81,7 +81,7 @@ void delete_area(Area* area)
 
 }
 
-void draw_area(Area* area) {
+/*void draw_area(Area* area) {
     if (area == NULL) {
         printf("Error: Area is NULL.\n");
         return;
@@ -107,7 +107,7 @@ void draw_area(Area* area) {
         free(pixel_list);
     }
 }
-
+*/
 
 void print_area(Area* area) {
     if (area == NULL) {
