@@ -130,7 +130,7 @@ void print_list(LIST l)
 {
     if (empty_list(l))
     {
-        printf("Empty list");
+        printf("Empty list\n");
     }
     else
     {
