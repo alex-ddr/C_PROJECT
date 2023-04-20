@@ -7,173 +7,61 @@
 
 // Function to get a point from the user
 Point *get_point() {
-    char input[256];
     int x, y;
-
-    printf("Point :");
-    fgets(input, sizeof(input), stdin);
-
-    int num_spaces = 0;
-    for (int i = 0; i < strlen(input); i++) {
-        if (input[i] == ' ') {
-            num_spaces++;
-        }
-    }
-
-    if (num_spaces != 1) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
-    if (sscanf(input, "%d %d", &x, &y) != 2) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
+    printf("Enter the coordinates x y:");
+    scanf("%d %d", &x, &y);
     Point *p = create_point(x, y);
-    if (p == NULL) {
-        printf("Error: Failed to allocate memory\n");
-        return NULL;
-    }
-
     return p;
 }
-
 // Function to get a line from the user
 Line *get_line() {
-    char input[256];
     int x1, y1, x2, y2;
-
-    printf("Line :");
-    fgets(input, sizeof(input), stdin);
-
-    int num_spaces = 0;
-    for (int i = 0; i < strlen(input); i++) {
-        if (input[i] == ' ') {
-            num_spaces++;
-        }
-    }
-
-    if (num_spaces != 3) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
-    if (sscanf(input, "%d %d %d %d", &x1, &y1, &x2, &y2) != 4) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
+    printf("Enter the coordinates of the first point x y:");
+    scanf("%d %d", &x1, &y1);
+    printf("Enter the coordinates of the second point x y:");
+    scanf("%d %d", &x2, &y2);
     Point *p1 = create_point(x1, y1);
     Point *p2 = create_point(x2, y2);
     Line *line = create_line(p1, p2);
-
-    if (line == NULL) {
-        printf("Error: Failed to allocate memory\n");
-        exit(1);
-    }
-
     return line;
 }
 
 // Function to get a square from the user
 Square *get_square() {
-    char input[256];
     int x, y, l;
-
-    printf("Square :");
-    fgets(input, sizeof(input), stdin);
-
-    int num_spaces = 0;
-    for (int i = 0; i < strlen(input); i++) {
-        if (input[i] == ' ') {
-            num_spaces++;
-        }
-    }
-
-    // Check that there is exactly one space in the input
-    if (num_spaces != 2) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
-    if (sscanf(input, "%d %d %d", &x, &y, &l) != 3) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
+    printf("Enter the coordinates of the point x y:");
+    scanf("%d %d", &x, &y);
+    printf("Enter the length of the square:");
+    scanf("%d", &l);
     Point *p = create_point(x,y);
     Square *square = create_square(p, l);
-    if (square == NULL) {
-        printf("Error: Failed to allocate memory\n");
-        exit(1);
-    }
     return square;
 }
 
 // Function to get a rectangle from the user
 Rectangle *get_rectangle() {
-    char input[256];
     int x, y, width, height;
-
-    printf("Rectangle :");
-    fgets(input, sizeof(input), stdin);
-
-    int num_spaces = 0;
-    for (int i = 0; i < strlen(input); i++) {
-        if (input[i] == ' ') {
-            num_spaces++;
-        }
-    }
-
-    if (num_spaces != 3) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
-    if (sscanf(input, "%d %d %d %d", &x, &y, &width, &height) != 4) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
+    printf("Enter the coordinates of the point x y:");
+    scanf("%d %d", &x, &y);
     Point *p = create_point(x,y);
+    printf("Enter the width of the rectangle:");
+    scanf("%d", &width);
+    printf("Enter the width of the rectangle:");
+    scanf("%d", &height);
     Rectangle *rectangle = create_rectangle(p, width, height);
-    if (rectangle == NULL) {
-        printf("Error: Failed to allocate memory\n");
-        exit(1);
-    }
     return rectangle;
 }
 
 // Function to get a circle from the user
 Circle *get_circle() {
-    char input[256];
     int x, y, radius;
-
-    printf("Circle :");
-    fgets(input, sizeof(input), stdin);
-
-    int num_spaces = 0;
-    for (int i = 0; i < strlen(input); i++) {
-        if (input[i] == ' ') {
-            num_spaces++;
-        }
-    }
-
-    if (num_spaces != 2) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
-
-    if (sscanf(input, "%d %d %d", &x, &y, &radius) != 3) {
-        printf("Error: Invalid input format\n");
-        return NULL;
-    }
+    printf("Enter the coordinates of the point x y:");
+    scanf("%d %d", &x, &y);
+    printf("Enter the radius of the circle:");
+    scanf("%d", &radius);
     Point *p = create_point(x,y);
     Circle *circle = create_circle(p, radius);
 
-    if (circle == NULL) {
-        printf("Error: Failed to allocate memory\n");
-        exit(1);
-    }
     return circle;
 }
 
@@ -184,12 +72,6 @@ Polygon* get_polygon() {
     scanf("%d", &n);
 
     Polygon* poly = create_polygon(n);
-
-    if (poly == NULL) {
-        printf("Error: failed to allocate memory for polygon.\n");
-        return NULL;
-    }
-
     int x, y;
     for (int i = 0; i < n; i++) {
         printf("point %d: ", i+1);
@@ -197,7 +79,6 @@ Polygon* get_polygon() {
         Point* p = create_point(x, y);
         poly->points[i] = p;
     }
-
     return poly;
 }
 
@@ -239,8 +120,12 @@ LIST add_tail_list(LIST l , Shape shp)
     }
     return l;
 }
+// Add this function to your code
+Shape *get_shape_from_node(NODE *node) {
+    return &(node->shape);
+}
 
-// PRINT SHAPES
+// Updated print_list function
 void print_list(LIST l)
 {
     if (empty_list(l))
@@ -249,58 +134,14 @@ void print_list(LIST l)
     }
     else
     {
-        char str[10];
-        NODE * currentNode = l;
+        NODE *currentNode = l;
+        printf("The list of shapes:\n");
         while (currentNode->succ != NULL)
         {
-            switch (currentNode->shape.shape_type) { // change shape en shape_type
-                case POINT:
-                    strcpy(str, "POINT");
-                    break;
-                case LINE:
-                    strcpy(str, "LINE");
-                    break;
-                case SQUARE:
-                    strcpy(str, "SQUARE");
-                    break;
-                case RECTANGLE:
-                    strcpy(str, "RECTANGLE");
-                    break;
-                case CIRCLE:
-                    strcpy(str, "CIRCLE");
-                    break;
-                case POLYGON:
-                    strcpy(str, "POLYGON");
-                    break;
-            }
-            printf("%s, ", str);
+            print_shape(get_shape_from_node(currentNode));
             currentNode = currentNode->succ;
         }
-
-        switch (currentNode->shape.shape_type) {
-            case POINT:
-                strcpy(str, "POINT");
-                break;
-            case LINE:
-                strcpy(str, "LINE");
-                break;
-            case SQUARE:
-                strcpy(str, "SQUARE");
-                break;
-            case RECTANGLE:
-                strcpy(str, "RECTANGLE");
-                break;
-            case CIRCLE:
-                strcpy(str, "CIRCLE");
-                break;
-            case POLYGON:
-                strcpy(str, "POLYGON");
-                break;
-            default:
-                strcpy(str, "UNKNOWN");
-                break;
-        }
-        printf("%s", str);
+        print_shape(get_shape_from_node(currentNode));
     }
 }
 
