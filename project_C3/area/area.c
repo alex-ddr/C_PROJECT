@@ -93,8 +93,7 @@ void draw_area(Area* area) {
 
     for (int i = 0; i < area->nb_shape; i++) {
         Shape* current_shape = area->shapes[i];
-        int nb_pixel = 0;
-        Pixel** pixel_list = create_shape_to_pixel(current_shape, &nb_pixel);
+        Pixel** pixel_list = create_shape_to_pixel(current_shape);
 
         for (int j = 0; pixel_list[j] != NULL; j++) {
             Pixel* current_pixel = pixel_list[j];
@@ -121,9 +120,9 @@ void print_area(Area* area) {
     for (unsigned int i = 0; i < area->height; i++) {
         for (unsigned int j = 0; j < area->width; j++) {
             if (area->mat[i][j] == 1) {
-                printf("%c ", 35);
+                printf("%c", 35);
             } else {
-                printf("%c ", 46);
+                printf("%c", 46);
             }
         }
         printf("\n");

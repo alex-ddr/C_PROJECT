@@ -6,13 +6,13 @@
 
 int main() {
     LIST l = NULL;
-    Area * draw_zone = create_area(12, 12);
+    Area * draw_zone = create_area(20, 20);
     Shape * shape1 = create_line_shape(&l);
     add_shape_to_area(draw_zone, shape1);
     draw_area(draw_zone);
-    Shape * shape2 = create_point_shape(&l);
-    add_shape_to_area(draw_zone, shape2);
-    draw_area(draw_zone);
+    //Shape * shape2 = create_point_shape(&l);
+    //add_shape_to_area(draw_zone, shape2);
+    //draw_area(draw_zone);
     print_area(draw_zone);
 }
 
