@@ -2,8 +2,22 @@
 #include "shapes/shapes.h"
 #include "functions_shapes/functions_shapes.h"
 #include "menu/menu.h"
+#include "area/area.h"
+
 int main() {
     LIST l = NULL;
+    Area * draw_zone = create_area(12, 12);
+    Shape * shape1 = create_line_shape(&l);
+    add_shape_to_area(draw_zone, shape1);
+    draw_area(draw_zone);
+    Shape * shape2 = create_point_shape(&l);
+    add_shape_to_area(draw_zone, shape2);
+    draw_area(draw_zone);
+    print_area(draw_zone);
+}
+
+
+    /*
     while (1) {
         char choice;
         int choice2;
@@ -30,6 +44,4 @@ int main() {
             print_list(l);
             printf("\n");
         }
-    }
-    return 0;
-}
+    }*/

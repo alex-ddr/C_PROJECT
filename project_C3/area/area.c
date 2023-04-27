@@ -2,8 +2,6 @@
 #include "stdio.h"
 #include "area.h"
 #include "../pixel/pixel.h"
-#include "../shapes/shapes.h"
-
 
 Area* create_area(unsigned int width, unsigned int height) {
     Area * area = (Area*) malloc(sizeof(Area));
@@ -14,6 +12,10 @@ Area* create_area(unsigned int width, unsigned int height) {
     area->width = width;
     area->height = height;
     area->nb_shape = 0;
+
+    for (int i = 0; i < SHAPE_MAX; i++) {
+        area->shapes[i] = NULL;
+    }
 
     area->mat = (BOOL**) malloc(height * sizeof(BOOL*));
     if (area->mat == NULL) {
@@ -39,6 +41,11 @@ Area* create_area(unsigned int width, unsigned int height) {
 }
 
 void add_shape_to_area(Area* area, Shape* shape) {
+    if (shape == NULL) {
+        printf("Error: Invalid shape.\n");
+        return;
+    }
+
     if (area->nb_shape < SHAPE_MAX) {
         area->shapes[area->nb_shape] = shape;
         area->nb_shape += 1;
@@ -63,9 +70,7 @@ void erase_area(Area* area) {
     area->nb_shape = 0;
 }
 
-
-void delete_area(Area* area)
-{
+void delete_area(Area* area) {
     if (area == NULL) {
         printf("Error: Area is NULL.\n");
         return;
@@ -78,10 +83,9 @@ void delete_area(Area* area)
     }
     free(area->mat);
     free(area);
-
 }
 
-/*void draw_area(Area* area) {
+void draw_area(Area* area) {
     if (area == NULL) {
         printf("Error: Area is NULL.\n");
         return;
@@ -89,13 +93,13 @@ void delete_area(Area* area)
 
     for (int i = 0; i < area->nb_shape; i++) {
         Shape* current_shape = area->shapes[i];
-
-        Pixel** pixel_list = create_shape_to_pixel(current_shape);
+        int nb_pixel = 0;
+        Pixel** pixel_list = create_shape_to_pixel(current_shape, &nb_pixel);
 
         for (int j = 0; pixel_list[j] != NULL; j++) {
             Pixel* current_pixel = pixel_list[j];
-            unsigned int x = current_pixel->x;
-            unsigned int y = current_pixel->y;
+            unsigned int x = current_pixel->px - 1;
+            unsigned int y = current_pixel->py - 1;
 
             if (x < area->height && y < area->width) {
                 area->mat[x][y] = 1;
@@ -107,7 +111,6 @@ void delete_area(Area* area)
         free(pixel_list);
     }
 }
-*/
 
 void print_area(Area* area) {
     if (area == NULL) {
@@ -115,14 +118,12 @@ void print_area(Area* area) {
         return;
     }
 
-    for (unsigned int i = 0; i < area->height; i++)
-    {
-        for (unsigned int j = 0; j < area->width; j++)
-        {
+    for (unsigned int i = 0; i < area->height; i++) {
+        for (unsigned int j = 0; j < area->width; j++) {
             if (area->mat[i][j] == 1) {
-                printf("%c", 35);
+                printf("%c ", 35);
             } else {
-                printf("%c", 46);
+                printf("%c ", 46);
             }
         }
         printf("\n");
