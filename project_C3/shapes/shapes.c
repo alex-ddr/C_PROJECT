@@ -198,20 +198,20 @@ Shape *create_empty_shape(SHAPE_TYPE shape_type)
 }
 
 // SHAPE POINT
-Shape *create_point_shape(LIST *l)
+Shape *create_point_shape(LIST *l, int x, int y)
 {
     Shape *shp = create_empty_shape(POINT);
-    Point *p = get_point();
+    Point *p = create_point(x, y);
     shp->ptrShape = p;
     *l = add_tail_list(*l, *shp);
     return shp;
 }
 
 // SHAPE LINE
-Shape *create_line_shape(LIST *l)
+Shape *create_line_shape(LIST *l, int x, int y, int z, int w)
 {
     Shape *shp = create_empty_shape(LINE);
-    Line * line = get_line();
+    Line * line = create_line(create_point(x, y), create_point(z, w));
     shp->ptrShape = line;
     *l = add_tail_list(*l, *shp);
 
@@ -219,10 +219,11 @@ Shape *create_line_shape(LIST *l)
 }
 
 // SHAPE SQUARE
-Shape *create_square_shape(LIST *l)
+Shape *create_square_shape(LIST *l, int x, int y, int z)
 {
     Shape *shp = create_empty_shape(SQUARE);
-    Square * square= get_square();
+    Point* p = create_point(x, y);
+    Square * square= create_square(p, z);
     shp->ptrShape = square;
     *l = add_tail_list(*l, *shp);
 
@@ -230,10 +231,11 @@ Shape *create_square_shape(LIST *l)
 }
 
 // SHAPE RECTANGLE
-Shape *create_rectangle_shape(LIST *l)
+Shape *create_rectangle_shape(LIST *l, int x, int y, int z, int w)
 {
     Shape *shp = create_empty_shape(RECTANGLE);
-    Rectangle * rectangle = get_rectangle();
+    Point* p = create_point(x, y);
+    Rectangle * rectangle = create_rectangle(p, z, w);
     shp->ptrShape = rectangle;
     *l = add_tail_list(*l, *shp);
 
@@ -241,10 +243,11 @@ Shape *create_rectangle_shape(LIST *l)
 }
 
 // SHAPE CIRCLE
-Shape *create_circle_shape(LIST *l)
+Shape *create_circle_shape(LIST *l, int x, int y, int z)
 {
     Shape *shp = create_empty_shape(CIRCLE);
-    Circle * circle= get_circle();
+    Point* p = create_point(x, y);
+    Circle * circle= create_circle(p, z);
     shp->ptrShape = circle;
     *l = add_tail_list(*l, *shp);
 

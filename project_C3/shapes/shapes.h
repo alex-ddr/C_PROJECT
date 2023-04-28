@@ -83,11 +83,11 @@ typedef struct node {
 typedef NODE* LIST;
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type);
-Shape *create_point_shape(LIST*);
-Shape *create_line_shape(LIST*);
-Shape *create_square_shape(LIST*);
-Shape *create_rectangle_shape(LIST*);
-Shape *create_circle_shape(LIST*);
+Shape *create_point_shape(LIST*, int x, int y);
+Shape *create_line_shape(LIST*, int x, int y, int z, int w);
+Shape *create_square_shape(LIST*, int x, int y, int z);
+Shape *create_rectangle_shape(LIST*, int x, int y, int z, int w);
+Shape *create_circle_shape(LIST*, int x, int y, int z);
 Shape *create_polygon_shape(LIST*);
 void delete_shape(Shape * shape);
 void print_shape(Shape * shape);
