@@ -127,4 +127,5 @@ void print_area(Area* area) {
         }
         printf("\n");
     }
+    printf("\n");
 }
