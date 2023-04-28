@@ -50,35 +50,37 @@ void pixel_line(Line * line, Pixel ** pixel) {
     }
 }
 
-void pixel_circle(Circle* shape, Pixel** pixel){
+int pixel_circle(Circle* shape, Pixel*** pixel){
     int p_x = shape->center->pos_x, p_y = shape->center->pos_y;
-    int x = 0, y = shape->radius, d = y - 1;
+    int radius = shape->radius;
+    int max_pixels = (int)(2 * M_PI * radius) * 2; // Estimation du nombre maximum de pixels nécessaires
 
+    *pixel = (Pixel **) malloc(max_pixels * sizeof(Pixel *));
     int i = -1;
-    while (y >= x){
-        pixel[++i] = create_pixel(p_x + x, p_y + y);
-        pixel[++i] = create_pixel(p_x + y, p_y + x);
-        pixel[++i] = create_pixel(p_x - x, p_y + y);
-        pixel[++i] = create_pixel(p_x - y, p_y + x);
-        pixel[++i] = create_pixel(p_x + x, p_y - y);
-        pixel[++i] = create_pixel(p_x + y, p_y - x);
-        pixel[++i] = create_pixel(p_x - x, p_y - y);
-        pixel[++i] = create_pixel(p_x - y, p_y - x);
 
-        if (d >= 2 * x) {
-            d -= 2 * x - 1;
-            x++;
-        }
-        else if (d < 2 * (shape->radius - y)) {
-            d += 2 * y - 1;
+    int x = 0, y = radius;
+    int d = 3 - 2 * radius;
+
+    while (x <= y) {
+        (*pixel)[++i] = create_pixel(p_x + x, p_y + y);
+        (*pixel)[++i] = create_pixel(p_x + y, p_y + x);
+        (*pixel)[++i] = create_pixel(p_x - x, p_y + y);
+        (*pixel)[++i] = create_pixel(p_x - y, p_y + x);
+        (*pixel)[++i] = create_pixel(p_x + x, p_y - y);
+        (*pixel)[++i] = create_pixel(p_x + y, p_y - x);
+        (*pixel)[++i] = create_pixel(p_x - x, p_y - y);
+        (*pixel)[++i] = create_pixel(p_x - y, p_y - x);
+
+        if (d < 0) {
+            d = d + 4 * x + 6;
+        } else {
+            d = d + 4 * (x - y) + 10;
             y--;
         }
-        else {
-            d += 2 * (y - x - 1);
-            y--;
-            x++;
-        }
+        x++;
     }
+
+    return i + 1;
 }
 
 void pixel_square(Square* square, Pixel** pixel){
@@ -110,7 +112,7 @@ void pixel_square(Square* square, Pixel** pixel){
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel){
     int w = rectangle->width, h = rectangle->height;
     int x = rectangle->top_left->pos_x, y = rectangle->top_left->pos_y;
-    int k = 0;
+    int k = -1; // Change the initialization here
 
     // top
     for (int i=0; i < w; i++)
@@ -127,12 +129,14 @@ void pixel_rectangle(Rectangle* rectangle, Pixel** pixel){
     // left
     for (int i=1; i < h - 1; i++)
         pixel[++k] = create_pixel(x, y + i);
-
-    //*nb_pixels = 2*w + 2*h - 4;
 }
 
 void pixel_polygon(Polygon* polygon, Pixel** pixel){
-
+int nb_vertex = polygon->n;
+for(int i = 0; i < nb_vertex -1; i++)
+{
+    pixel_line(create_line(polygon->points[i], polygon->points[i+1]), pixel);
+}
 }
 
 Pixel** create_shape_to_pixel(Shape * shape) {
@@ -162,9 +166,7 @@ Pixel** create_shape_to_pixel(Shape * shape) {
         }
         case CIRCLE: {
             Circle *circle = shape->ptrShape;
-            nb_pixels = (int) (2 * circle->radius * sqrt(2)) + 1;
-            pixel = (Pixel **) malloc((nb_pixels + 1) * sizeof(Pixel *));
-            pixel_circle(circle, pixel);
+            nb_pixels = pixel_circle(circle, &pixel);
             break;
         }
         case RECTANGLE: {
@@ -178,8 +180,9 @@ Pixel** create_shape_to_pixel(Shape * shape) {
             printf("Error: Invalid shape\n");
         break;
     }
-        pixel[nb_pixels] = NULL;
-        return pixel;
+    pixel = realloc(pixel, (nb_pixels + 1) * sizeof(Pixel *));
+    pixel[nb_pixels] = NULL;
+    return pixel;
 }
 
 void delete_pixel_shape(Pixel** pixel, int nb_pixels)

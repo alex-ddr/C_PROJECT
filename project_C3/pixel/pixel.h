@@ -11,7 +11,7 @@ Pixel *create_pixel(int px, int py);
 void delete_pixel(Pixel * pixel);
 void pixel_point(Shape* shape, Pixel** pixel);
 void pixel_line(Line* line, Pixel** pixel);
-void pixel_circle(Circle* shape, Pixel** pixel);
+int pixel_circle(Circle* shape, Pixel*** pixel);
 void pixel_square(Square* square, Pixel** pixel);
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel);
 void pixel_polygon(Polygon* polygon, Pixel** pixel);
