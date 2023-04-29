@@ -107,10 +107,8 @@ void draw_area(Area* area) {
             if (x < area->height && y < area->width) {
                 area->mat[x][y] = 1;
             }
-
             free(current_pixel);
         }
-
         free(pixel_list);
     }
 }
@@ -120,7 +118,6 @@ void print_area(Area* area) {
         printf("Error: Area is NULL.\n");
         return;
     }
-
     for (unsigned int i = 0; i < area->height; i++) {
         for (unsigned int j = 0; j < area->width; j++) {
             if (area->mat[i][j] == 1) {

@@ -1,6 +1,7 @@
 #ifndef PROJECT_C2_PIXEL_H
 #define PROJECT_C2_PIXEL_H
 #include "../shapes/shapes.h"
+#include "../area/area.h"
 
 typedef struct pixel {
     int px;
@@ -16,7 +17,6 @@ void pixel_square(Square* square, Pixel** pixel);
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel);
 void pixel_polygon(Polygon* polygon, Pixel** pixel);
 Pixel** create_shape_to_pixel(Shape * shape);
-void delete_pixel_shape(Pixel** pixel, int nb_pixels);
-
+void delete_pixel_shape(int k, Area * area);
 
 #endif //PROJECT_C2_PIXEL_H

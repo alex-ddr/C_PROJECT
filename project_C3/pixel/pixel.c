@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "pixel.h"
 #include "math.h"
+#include "../id/id.h"
 
 Pixel *create_pixel(int px, int py) {
     Pixel *pixel = (Pixel *)malloc(sizeof(Pixel));
@@ -16,8 +17,12 @@ Pixel *create_pixel(int px, int py) {
     return pixel;
 }
 
-void delete_pixel(Pixel * pixel)
+void delete_pixel(Pixel *pixel)
 {
+    if (pixel == NULL) {
+        printf("Error: Invalid pixel\n");
+        return;
+    }
     free(pixel);
     pixel = NULL;
 }
@@ -132,11 +137,11 @@ void pixel_rectangle(Rectangle* rectangle, Pixel** pixel){
 }
 
 void pixel_polygon(Polygon* polygon, Pixel** pixel){
-int nb_vertex = polygon->n;
-for(int i = 0; i < nb_vertex -1; i++)
-{
-    pixel_line(create_line(polygon->points[i], polygon->points[i+1]), pixel);
-}
+    int nb_vertex = polygon->n;
+    for(int i = 0; i < nb_vertex - 1; i++) {
+        pixel_line(create_line(polygon->points[i], polygon->points[i+1]), pixel);
+    }
+    pixel_line(create_line(polygon->points[nb_vertex - 1], polygon->points[0]), pixel);
 }
 
 Pixel** create_shape_to_pixel(Shape * shape) {
@@ -185,10 +190,32 @@ Pixel** create_shape_to_pixel(Shape * shape) {
     return pixel;
 }
 
-void delete_pixel_shape(Pixel** pixel, int nb_pixels)
-{
-    for (int i = 0; i < nb_pixels; i++) {
-        delete_pixel(pixel[i]);
+void delete_pixel_shape(int k, Area *area) {
+    if (area->nb_shape < k) {
+        printf("Error invalid id\n");
+    } else {
+        Shape *current_shape = area->shapes[k - 1];
+        Pixel **pixel_list = create_shape_to_pixel(current_shape);
+        for (int j = 0; pixel_list[j] != NULL; j++) {
+            Pixel *current_pixel = pixel_list[j];
+            unsigned int x = current_pixel->px - 1;
+            unsigned int y = current_pixel->py - 1;
+
+            if (x < area->width && y < area->height) {
+                area->mat[y][x] = 0;
+            }
+            free(current_pixel);
+        }
+        for (int i = k - 1; i < area->nb_shape - 1; i++) {
+            area->shapes[i]->id = area->shapes[i]->id - 1;
+
+            // Remove the shape from the shape list and update the count
+            for (int i = k - 1; i < area->nb_shape - 1; i++) {
+                area->shapes[i] = area->shapes[i + 1];
+            }
+            // Free memory allocated to the shape
+            delete_shape(current_shape);
+            get_previous_id();
+        }
     }
-    free(pixel);
 }

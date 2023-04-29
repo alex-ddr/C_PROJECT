@@ -1,69 +1,9 @@
 #include <stdio.h>
 #include "stdlib.h"
 #include "../shapes/shapes.h"
-#include "string.h"
 #include "stdbool.h"
 #include "functions_shapes.h"
-
-// Function to get a point from the user
-Point *get_point() {
-    int x, y;
-        printf("Enter the coordinates x y:");
-        scanf("%d %d", &x, &y);
-    Point *p = create_point(x, y);
-    return p;
-}
-// Function to get a line from the user
-Line *get_line() {
-    int x1, y1, x2, y2;
-    printf("Enter the coordinates of the first point x y:");
-    scanf("%d %d", &x1, &y1);
-    printf("Enter the coordinates of the second point x y:");
-    scanf("%d %d", &x2, &y2);
-    Point *p1 = create_point(x1, y1);
-    Point *p2 = create_point(x2, y2);
-    Line *line = create_line(p1, p2);
-    return line;
-}
-
-// Function to get a square from the user
-Square *get_square() {
-    int x, y, l;
-    printf("Enter the coordinates of the point x y:");
-    scanf("%d %d", &x, &y);
-    printf("Enter the length of the square:");
-    scanf("%d", &l);
-    Point *p = create_point(x,y);
-    Square *square = create_square(p, l);
-    return square;
-}
-
-// Function to get a rectangle from the user
-Rectangle *get_rectangle() {
-    int x, y, width, height;
-    printf("Enter the coordinates of the point x y:");
-    scanf("%d %d", &x, &y);
-    Point *p = create_point(x,y);
-    printf("Enter the width of the rectangle:");
-    scanf("%d", &width);
-    printf("Enter the width of the rectangle:");
-    scanf("%d", &height);
-    Rectangle *rectangle = create_rectangle(p, width, height);
-    return rectangle;
-}
-
-// Function to get a circle from the user
-Circle *get_circle() {
-    int x, y, radius;
-    printf("Enter the coordinates of the point x y:");
-    scanf("%d %d", &x, &y);
-    printf("Enter the radius of the circle:");
-    scanf("%d", &radius);
-    Point *p = create_point(x,y);
-    Circle *circle = create_circle(p, radius);
-
-    return circle;
-}
+#include "../id/id.h"
 
 // Function to get a polygon from the user
 Polygon* get_polygon() {
@@ -120,12 +60,44 @@ LIST add_tail_list(LIST l , Shape shp)
     }
     return l;
 }
-// Add this function to your code
+
+void delete_node(LIST *l, int ID) {
+    // If the list is empty, return
+    if (*l == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+
+    // If the head node itself holds the key, update the head
+    if ((*l)->shape.id == ID) {
+        NODE *temp = *l;
+        *l = (*l)->succ;
+        free(temp);
+        return;
+    }
+
+    // Find the previous node of the node to be deleted
+    NODE *prev = *l;
+    while (prev->succ != NULL && prev->succ->shape.id != ID) {
+        prev = prev->succ;
+    }
+
+    // If the key was not found in the list, return
+    if (prev->succ == NULL) {
+        printf("The ID is not present in the list.\n");
+        return;
+    }
+
+    // If the node to be deleted is the tail or in the middle, update the 'succ' of the previous node
+    NODE *temp = prev->succ;
+    prev->succ = prev->succ->succ;
+    free(temp);
+}
+
 Shape *get_shape_from_node(NODE *node) {
     return &(node->shape);
 }
 
-// Updated print_list function
 void print_list(LIST l)
 {
     if (empty_list(l))
@@ -144,5 +116,3 @@ void print_list(LIST l)
         print_shape(get_shape_from_node(currentNode));
     }
 }
-
-

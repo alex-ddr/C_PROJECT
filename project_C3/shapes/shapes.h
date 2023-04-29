@@ -1,6 +1,5 @@
 #ifndef PROJECT_C2_SHAPES_H
 #define PROJECT_C2_SHAPES_H
-
 // POINT DEFINITION
 typedef struct point {
     int pos_x;

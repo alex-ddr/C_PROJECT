@@ -7,8 +7,8 @@
 
 typedef struct area {
     unsigned int width; // Number of pixels in width or number of columns (y-axis)
-    unsigned int height; // Number of pixels in height or number of lines (x axis)
-    int ** mat; // pixel size matrix (width * height)
+    unsigned int height; // Number of pixels in height or number of lines (x-axis)
+    BOOL ** mat; // pixel size matrix (width * height)
     Shape* shapes[SHAPE_MAX]; // array of shapes
     int nb_shape; // number of shapes in the shapes array (logical size)
 }Area;
