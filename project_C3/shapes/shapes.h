@@ -87,7 +87,7 @@ Shape *create_line_shape(LIST*, int x, int y, int z, int w);
 Shape *create_square_shape(LIST*, int x, int y, int z);
 Shape *create_rectangle_shape(LIST*, int x, int y, int z, int w);
 Shape *create_circle_shape(LIST*, int x, int y, int z);
-Shape *create_polygon_shape(LIST*);
+Shape *create_polygon_shape(LIST*, int n);
 void delete_shape(Shape * shape);
 void print_shape(Shape * shape);
 

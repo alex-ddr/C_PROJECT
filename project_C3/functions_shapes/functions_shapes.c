@@ -6,11 +6,7 @@
 #include "../id/id.h"
 
 // Function to get a polygon from the user
-Polygon* get_polygon() {
-    int n;
-    printf("Enter the number of points in the polygon: ");
-    scanf("%d", &n);
-
+Polygon* get_polygon(int n) {
     Polygon* poly = create_polygon(n);
     int x, y;
     for (int i = 0; i < n; i++) {

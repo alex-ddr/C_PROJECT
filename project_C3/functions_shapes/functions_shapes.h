@@ -3,7 +3,7 @@
 #include "stdbool.h"
 #include "../area/area.h"
 
-Polygon *get_polygon();
+Polygon *get_polygon(int n);
 
 NODE * create_node(Shape);
 bool empty_list(LIST);

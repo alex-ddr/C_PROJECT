@@ -42,7 +42,7 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
                "         is width and whose height is height\n"
                "   - polygon x1 y1 x2 y2 x3 y3 ... ... :  add a polygon with the list of given points\n"
                "   - plot :  refresh the screen to display all the geometric shapes in the image (depending on the\n"
-               "         isplay rules)\n"
+               "         display rules)\n"
                "   - list :  display a list of all the geometric shapes that make up the image and all their information\n"
                "   - delete id :  delete a shape from its identifier id.\n"
                "   - erase :  remove all shapes from an image.\n\n"
@@ -74,21 +74,27 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
         Shape* shape = create_rectangle_shape(l, x, y, z, w);
         add_shape_to_area(draw_zone, shape);
     }
+
+    else if (sscanf(str, "polygon %d", &x) == 1) {
+
+        Shape* shape = create_polygon_shape(l, x);
+        add_shape_to_area(draw_zone, shape);
+    }
+
     else if (strcmp(str, "erase") == 0) {
         erase_area(draw_zone);
     }
+
     else if (sscanf(str, "delete %d", &k) == 1){
         delete_pixel_shape( k, draw_zone);
         delete_node(l, k);
-        for (int i = 0; i < draw_zone->nb_shape; i++) {
-            printf("%d",draw_zone->shapes[i]->id);
-        }
-
     }
     else{
         printf("Unidentified input");
         return 0;
     }
+
     draw_area(draw_zone);
     print_area(draw_zone);
+
 }

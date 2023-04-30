@@ -98,12 +98,10 @@ void draw_area(Area* area) {
     for (int i = 0; i < area->nb_shape; i++) {
         Shape* current_shape = area->shapes[i];
         Pixel** pixel_list = create_shape_to_pixel(current_shape);
-
         for (int j = 0; pixel_list[j] != NULL; j++) {
             Pixel* current_pixel = pixel_list[j];
             unsigned int x = current_pixel->px - 1;
             unsigned int y = current_pixel->py - 1;
-
             if (x < area->height && y < area->width) {
                 area->mat[x][y] = 1;
             }

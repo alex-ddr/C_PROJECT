@@ -141,12 +141,12 @@ void pixel_polygon(Polygon* polygon, Pixel** pixel){
     for(int i = 0; i < nb_vertex - 1; i++) {
         pixel_line(create_line(polygon->points[i], polygon->points[i+1]), pixel);
     }
-    pixel_line(create_line(polygon->points[nb_vertex - 1], polygon->points[0]), pixel);
+
 }
 
 Pixel** create_shape_to_pixel(Shape * shape) {
     Pixel **pixel = NULL;
-    int nb_pixels;
+    int nb_pixels = 0;
     switch (shape->shape_type) {
         case POINT:
             nb_pixels = 1;
@@ -181,10 +181,23 @@ Pixel** create_shape_to_pixel(Shape * shape) {
             pixel_rectangle(rectangle, pixel);
             break;
         }
+        case POLYGON: {
+            Polygon *polygon = shape->ptrShape;
+            for (int i=0; i<polygon->n-1; i++) {
+                int dx = abs(polygon->points[i+1]->pos_x - polygon->points[i]->pos_x);
+                int dy = abs(polygon->points[i+1]->pos_y - polygon->points[i]->pos_y);
+                nb_pixels += (dx > dy ? dx : dy) + 1;
+            }
+            nb_pixels -= polygon->n;
+            nb_pixels += 2;
+            pixel = (Pixel **) malloc((nb_pixels + 1) * sizeof(Pixel *));
+            pixel_polygon(polygon, pixel);
+        }
         default:
             printf("Error: Invalid shape\n");
         break;
     }
+
     pixel = realloc(pixel, (nb_pixels + 1) * sizeof(Pixel *));
     pixel[nb_pixels] = NULL;
     return pixel;
@@ -213,6 +226,5 @@ void delete_pixel_shape(int k, Area *area) {
             area->nb_shape--;
             // Free memory allocated to the shape
             delete_shape(current_shape);
-            get_previous_id();
         }
     }

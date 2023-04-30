@@ -255,10 +255,10 @@ Shape *create_circle_shape(LIST *l, int x, int y, int z)
 }
 
 // SHAPE POLYGON
-Shape *create_polygon_shape(LIST *l)
+Shape *create_polygon_shape(LIST *l, int n)
 {
     Shape *shp = create_empty_shape(POLYGON);
-    Polygon * polygon= get_polygon();
+    Polygon * polygon= get_polygon(n);
     shp->ptrShape = polygon;
     *l = add_tail_list(*l, *shp);
 
