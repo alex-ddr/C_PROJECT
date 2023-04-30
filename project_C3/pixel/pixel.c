@@ -206,16 +206,13 @@ void delete_pixel_shape(int k, Area *area) {
             }
             free(current_pixel);
         }
-        for (int i = k - 1; i < area->nb_shape - 1; i++) {
-            area->shapes[i]->id = area->shapes[i]->id - 1;
-
             // Remove the shape from the shape list and update the count
             for (int i = k - 1; i < area->nb_shape - 1; i++) {
                 area->shapes[i] = area->shapes[i + 1];
             }
+            area->nb_shape--;
             // Free memory allocated to the shape
             delete_shape(current_shape);
             get_previous_id();
         }
     }
-}
