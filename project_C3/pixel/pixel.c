@@ -221,10 +221,10 @@ void delete_pixel_shape(int k, Area *area) {
         }
             // Remove the shape from the shape list and update the count
             for (int i = k - 1; i < area->nb_shape - 1; i++) {
-                area->shapes[i] = area->shapes[i + 1];
+                area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprime deux fois avec le meme id mais si tu l'enleve c le bordel
             }
-            area->nb_shape--;
-            // Free memory allocated to the shape
-            delete_shape(current_shape);
+            // area->nb_shape--; si tu le laisses tu peux pas supprime un id  >  a celui que t'as deja supprimé
+            // Free memory allocated to the shape 
+           delete_shape(current_shape);
         }
     }
