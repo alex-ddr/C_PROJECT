@@ -132,7 +132,7 @@ void delete_circle(Circle * circle)
 void print_circle(Circle * circle)
 {
 // need to ask what are we supposed to do?
-    printf("CIRCLE Center: %d,%d | Radius: %d\n",
+    printf("CIRCLE %d %d %d\n",
            circle->center->pos_x, circle->center->pos_y,
            circle->radius);
 }
