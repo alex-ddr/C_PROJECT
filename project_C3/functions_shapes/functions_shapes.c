@@ -80,7 +80,6 @@ void delete_node(LIST *l, int ID) {
 
     // If the key was not found in the list, return
     if (prev->succ == NULL) {
-        printf("The ID is not present in the list.\n");
         return;
     }
 
