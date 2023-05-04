@@ -136,13 +136,40 @@ void pixel_rectangle(Rectangle* rectangle, Pixel** pixel){
         pixel[++k] = create_pixel(x, y + i);
 }
 
-void pixel_polygon(Polygon* polygon, Pixel** pixel){
-    int nb_vertex = polygon->n;
-    for(int i = 0; i < nb_vertex - 1; i++) {
-        pixel_line(create_line(polygon->points[i], polygon->points[i+1]), pixel);
+void pixel_polygon(Polygon* polygon, Pixel** pixel) {
+
+    int nb_pixels = 0;
+    int index = 0;
+    Point* p1 = NULL;
+    Point* p2 = NULL;
+
+    for (int i=0; i<polygon->n-1; i++) {
+
+        // Création du segment
+        p1 = polygon->points[i];
+        p2 = polygon->points[i+1];
+        Line* line = create_line(p1, p2);
+
+        int dx = abs(line->p2->pos_x - line->p1->pos_x);
+        int dy = abs(line->p2->pos_y - line->p1->pos_y);
+        nb_pixels = (dx > dy ? dx : dy) + 1;
+
+        Pixel** pixels_segment = (Pixel**) malloc((nb_pixels+1) * sizeof(Pixel*));
+
+        pixel_line(line, pixels_segment);
+
+        for (int j=0; j<nb_pixels; j++) {
+            pixel[index] = pixels_segment[j];
+            index++;
+        }
+
+        free(pixels_segment);
+        delete_line(line);
+        printf("\n: %d %d :\n", index, i);
     }
 
 }
+
 
 Pixel** create_shape_to_pixel(Shape * shape) {
     Pixel **pixel = NULL;
@@ -182,20 +209,23 @@ Pixel** create_shape_to_pixel(Shape * shape) {
             break;
         }
         case POLYGON: {
-            Polygon *polygon = shape->ptrShape;
-            for (int i=0; i<polygon->n-1; i++) {
-                int dx = abs(polygon->points[i+1]->pos_x - polygon->points[i]->pos_x);
-                int dy = abs(polygon->points[i+1]->pos_y - polygon->points[i]->pos_y);
+            Polygon* polygon = shape->ptrShape;
+            printf("a");
+            for (int i = 0; i < polygon->n - 1; i++) {
+                int dx = abs(polygon->points[i + 1]->pos_x - polygon->points[i]->pos_x);
+                int dy = abs(polygon->points[i + 1]->pos_y - polygon->points[i]->pos_y);
                 nb_pixels += (dx > dy ? dx : dy) + 1;
             }
             nb_pixels -= polygon->n;
             nb_pixels += 2;
-            pixel = (Pixel **) malloc((nb_pixels + 1) * sizeof(Pixel *));
+            pixel = (Pixel**) malloc((nb_pixels + 1) * sizeof(Pixel*));
             pixel_polygon(polygon, pixel);
+            printf("c");
+            break;
         }
         default:
             printf("Error: Invalid shape\n");
-        break;
+            break;
     }
 
     pixel = realloc(pixel, (nb_pixels + 1) * sizeof(Pixel *));
@@ -219,12 +249,12 @@ void delete_pixel_shape(int k, Area *area) {
             }
             free(current_pixel);
         }
-            // Remove the shape from the shape list and update the count
-            for (int i = k - 1; i < area->nb_shape - 1; i++) {
-                area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprime deux fois avec le meme id mais si tu l'enleve c le bordel
-            }
-            // area->nb_shape--; si tu le laisses tu peux pas supprime un id  >  a celui que t'as deja supprimé
-            // Free memory allocated to the shape 
-           delete_shape(current_shape);
+        // Remove the shape from the shape list and update the count
+        for (int i = k - 1; i < area->nb_shape - 1; i++) {
+            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprime deux fois avec le meme id mais si tu l'enleve c le bordel
         }
+        // area->nb_shape--; si tu le laisses tu peux pas supprime un id  >  a celui que t'as deja supprimé
+        // Free memory allocated to the shape
+        delete_shape(current_shape);
     }
+}

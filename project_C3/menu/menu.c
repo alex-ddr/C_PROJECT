@@ -14,7 +14,6 @@ void read_input(char* input) {
 
 int compare_string(char* str, Area* draw_zone, LIST * l){
     int x, y, z, w, k;
-
     if (strcmp(str, "clear") == 0) {
         system("cls");
         return 0;
@@ -23,8 +22,10 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     else if (strcmp(str, "exit") == 0)
         exit(0);
 
-    else if (strcmp(str, "plot") == 0)
-        0; //we do nothing because at the end we eventually display the zone
+    else if (strcmp(str, "plot") == 0){
+        print_area(draw_zone);
+        return 0;
+    }
 
     else if (strcmp(str, "list") == 0) {
         print_list(*l);
@@ -83,6 +84,8 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
 
     else if (strcmp(str, "erase") == 0) {
         erase_area(draw_zone);
+        clear_area(draw_zone);
+        *l = NULL;
     }
 
     else if (sscanf(str, "delete %d", &k) == 1){
@@ -95,6 +98,5 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     }
 
     draw_area(draw_zone);
-    print_area(draw_zone);
 
 }

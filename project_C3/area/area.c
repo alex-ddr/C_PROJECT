@@ -68,7 +68,6 @@ void erase_area(Area* area) {
         area->shapes[i] = NULL;
     }
     area->nb_shape = 0;
-    clear_area(area);
 }
 
 void delete_area(Area** area_ptr) {

@@ -315,4 +315,3 @@ void delete_shape(Shape * shape)
     free(shape);
     shape = NULL;
 }
-
