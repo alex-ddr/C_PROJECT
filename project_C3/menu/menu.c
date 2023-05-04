@@ -89,8 +89,11 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     }
 
     else if (sscanf(str, "delete %d", &k) == 1){
-        delete_pixel_shape( k, draw_zone);
-        delete_node(l, k);
+        if (k > 0) {
+            delete_pixel_shape(k, draw_zone);
+            delete_node(l, k);
+        }
+        else printf("Error invalid id\n");
     }
     else{
         printf("Unidentified input");

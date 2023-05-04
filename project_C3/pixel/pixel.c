@@ -216,8 +216,6 @@ Pixel** create_shape_to_pixel(Shape * shape) {
                 int dy = abs(polygon->points[i + 1]->pos_y - polygon->points[i]->pos_y);
                 nb_pixels += (dx > dy ? dx : dy) + 1;
             }
-            nb_pixels -= polygon->n;
-            nb_pixels += 2;
             pixel = (Pixel**) malloc((nb_pixels + 1) * sizeof(Pixel*));
             pixel_polygon(polygon, pixel);
             printf("c");
@@ -234,9 +232,10 @@ Pixel** create_shape_to_pixel(Shape * shape) {
 }
 
 void delete_pixel_shape(int k, Area *area) {
-    if (area->nb_shape < k) {
+    if (area->nb_shape < k)
         printf("Error invalid id\n");
-    } else {
+
+    else {
         Shape *current_shape = area->shapes[k - 1];
         Pixel **pixel_list = create_shape_to_pixel(current_shape);
         for (int j = 0; pixel_list[j] != NULL; j++) {
@@ -249,11 +248,12 @@ void delete_pixel_shape(int k, Area *area) {
             }
             free(current_pixel);
         }
+
         // Remove the shape from the shape list and update the count
         for (int i = k - 1; i < area->nb_shape - 1; i++) {
-            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprime deux fois avec le meme id mais si tu l'enleve c le bordel
+            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprimes deux fois avec le meme id mais si tu l'enleves c n'importe quoi
         }
-        // area->nb_shape--; si tu le laisses tu peux pas supprime un id  >  a celui que t'as deja supprimé
+        // area->nb_shape--; si tu le laisses tu peux pas supprimer un id  >  a celui que t'as deja supprimé
         // Free memory allocated to the shape
         delete_shape(current_shape);
     }
