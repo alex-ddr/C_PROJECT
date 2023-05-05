@@ -68,7 +68,6 @@ void erase_area(Area* area) {
         area->shapes[i] = NULL;
     }
     area->nb_shape = 0;
-    clear_area(area);
 }
 
 void delete_area(Area** area_ptr) {
@@ -116,6 +115,7 @@ void print_area(Area* area) {
         printf("Error: Area is NULL.\n");
         return;
     }
+    printf("\n");
     for (unsigned int i = 0; i < area->height; i++) {
         for (unsigned int j = 0; j < area->width; j++) {
             if (area->mat[i][j] == 1) {

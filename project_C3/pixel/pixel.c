@@ -17,14 +17,8 @@ Pixel *create_pixel(int px, int py) {
     return pixel;
 }
 
-void delete_pixel(Pixel *pixel)
-{
-    if (pixel == NULL) {
-        printf("Error: Invalid pixel\n");
-        return;
-    }
+void delete_pixel(Pixel *pixel) {
     free(pixel);
-    pixel = NULL;
 }
 
 void pixel_point(Shape* shape, Pixel** pixel) {
@@ -210,7 +204,6 @@ Pixel** create_shape_to_pixel(Shape * shape) {
         }
         case POLYGON: {
             Polygon* polygon = shape->ptrShape;
-            printf("a");
             for (int i = 0; i < polygon->n - 1; i++) {
                 int dx = abs(polygon->points[i + 1]->pos_x - polygon->points[i]->pos_x);
                 int dy = abs(polygon->points[i + 1]->pos_y - polygon->points[i]->pos_y);
@@ -218,7 +211,6 @@ Pixel** create_shape_to_pixel(Shape * shape) {
             }
             pixel = (Pixel**) malloc((nb_pixels + 1) * sizeof(Pixel*));
             pixel_polygon(polygon, pixel);
-            printf("c");
             break;
         }
         default:
@@ -250,9 +242,9 @@ void delete_pixel_shape(int k, Area *area) {
 
         // Remove the shape from the shape list and update the count
         for (int i = k - 1; i < area->nb_shape - 1; i++) {
-            area->shapes[i] = area->shapes[i + 1];
+            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprimes deux fois avec le meme id mais si tu l'enleves c n'importe quoi
         }
-
+        // area->nb_shape--; si tu le laisses tu peux pas supprimer un id  >  a celui que t'as deja supprimé
         // Free memory allocated to the shape
         delete_shape(current_shape);
     }
