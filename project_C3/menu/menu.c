@@ -14,7 +14,6 @@ void read_input(char* input) {
 
 int compare_string(char* str, Area* draw_zone, LIST * l){
     int x, y, z, w, k;
-
     if (strcmp(str, "clear") == 0) {
         system("cls");
         return 0;
@@ -23,8 +22,10 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     else if (strcmp(str, "exit") == 0)
         exit(0);
 
-    else if (strcmp(str, "plot") == 0)
-        0; //we do nothing because at the end we eventually display the zone
+    else if (strcmp(str, "plot") == 0){
+        print_area(draw_zone);
+        return 0;
+    }
 
     else if (strcmp(str, "list") == 0) {
         print_list(*l);
@@ -41,7 +42,8 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
                "   - rectangle x y width height :  add a rectangle whose upper left corner is (x, y), whose width\n"
                "         is width and whose height is height\n"
                "   - polygon x1 y1 x2 y2 x3 y3 ... ... :  add a polygon with the list of given points\n"
-               "   - plot :  refresh the screen to display all the geometric shapes in the image \n"
+               "   - plot :  refresh the screen to display all the geometric shapes in the image (depending on the\n"
+               "         display rules)\n"
                "   - list :  display a list of all the geometric shapes that make up the image and all their information\n"
                "   - delete id :  delete a shape from its identifier id.\n"
                "   - erase :  remove all shapes from an image.\n\n"
@@ -75,16 +77,22 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     }
 
     else if (sscanf(str, "polygon %d", &x) == 1) {
+
         Shape* shape = create_polygon_shape(l, x);
         add_shape_to_area(draw_zone, shape);
     }
 
     else if (strcmp(str, "erase") == 0) {
         erase_area(draw_zone);
+        clear_area(draw_zone);
+        *l = NULL;
     }
 
     else if (sscanf(str, "delete %d", &k) == 1){
-        delete_pixel_shape( k, draw_zone);
+        if (k > 0) {
+            delete_pixel_shape(k, draw_zone);
+        }
+        else printf("Error invalid id\n");
     }
     else{
         printf("Unidentified input");
@@ -92,6 +100,5 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
     }
 
     draw_area(draw_zone);
-    print_area(draw_zone);
 
 }

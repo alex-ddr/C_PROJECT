@@ -231,7 +231,7 @@ Pixel** create_shape_to_pixel(Shape * shape) {
 }
 
 void delete_pixel_shape(int k, Area *area) {
-    if (area->nb_shape < k || area->shapes[k-1]==NULL)
+    if (area->nb_shape < k)
         printf("Error invalid id\n");
 
     else {
@@ -243,15 +243,16 @@ void delete_pixel_shape(int k, Area *area) {
             unsigned int y = current_pixel->py - 1;
 
             if (x < area->width && y < area->height) {
-                area->mat[y][x] = 0;
+                area->mat[x][y] = 0;
             }
-            free(current_pixel);
+            delete_pixel(current_pixel);
         }
 
         // Remove the shape from the shape list and update the count
         for (int i = k - 1; i < area->nb_shape - 1; i++) {
             area->shapes[i] = area->shapes[i + 1];
         }
+
         // Free memory allocated to the shape
         delete_shape(current_shape);
     }
