@@ -41,6 +41,7 @@ bool empty_list(LIST l)
 
 LIST add_tail_list(LIST l , Shape shp)
 {
+
     if (empty_list(l))
     {
         l = create_node(shp);
@@ -57,37 +58,6 @@ LIST add_tail_list(LIST l , Shape shp)
     return l;
 }
 
-void delete_node(LIST *l, int ID) {
-    // If the list is empty, return
-    if (*l == NULL) {
-        printf("The list is empty.\n");
-        return;
-    }
-
-    // If the head node itself holds the key, update the head
-    if ((*l)->shape.id == ID) {
-        NODE *temp = *l;
-        *l = (*l)->succ;
-        free(temp);
-        return;
-    }
-
-    // Find the previous node of the node to be deleted
-    NODE *prev = *l;
-    while (prev->succ != NULL && prev->succ->shape.id != ID) {
-        prev = prev->succ;
-    }
-
-    // If the key was not found in the list, return
-    if (prev->succ == NULL) {
-        return;
-    }
-
-    // If the node to be deleted is the tail or in the middle, update the 'succ' of the previous node
-    NODE *temp = prev->succ;
-    prev->succ = prev->succ->succ;
-    free(temp);
-}
 
 Shape *get_shape_from_node(NODE *node) {
     return &(node->shape);
@@ -111,3 +81,4 @@ void print_list(LIST l)
         print_shape(get_shape_from_node(currentNode));
     }
 }
+

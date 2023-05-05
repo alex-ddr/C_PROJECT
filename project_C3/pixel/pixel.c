@@ -222,7 +222,6 @@ Pixel** create_shape_to_pixel(Shape * shape) {
             break;
         }
         default:
-            printf("Error: Invalid shape\n");
             break;
     }
 
@@ -232,7 +231,7 @@ Pixel** create_shape_to_pixel(Shape * shape) {
 }
 
 void delete_pixel_shape(int k, Area *area) {
-    if (area->nb_shape < k)
+    if (area->nb_shape < k || area->shapes[k-1]==NULL)
         printf("Error invalid id\n");
 
     else {
@@ -251,9 +250,8 @@ void delete_pixel_shape(int k, Area *area) {
 
         // Remove the shape from the shape list and update the count
         for (int i = k - 1; i < area->nb_shape - 1; i++) {
-            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprimes deux fois avec le meme id mais si tu l'enleves c n'importe quoi
+            area->shapes[i] = area->shapes[i + 1];
         }
-        // area->nb_shape--; si tu le laisses tu peux pas supprimer un id  >  a celui que t'as deja supprimé
         // Free memory allocated to the shape
         delete_shape(current_shape);
     }

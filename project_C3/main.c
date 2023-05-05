@@ -4,6 +4,7 @@
 #include "area/area.h"
 int main() {
     Area* draw_zone = create_area(15, 15);
+
     LIST l = NULL;
 
     while (1) {
