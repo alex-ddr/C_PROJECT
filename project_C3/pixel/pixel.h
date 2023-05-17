@@ -17,6 +17,6 @@ void pixel_square(Square* square, Pixel** pixel);
 void pixel_rectangle(Rectangle* rectangle, Pixel** pixel);
 void pixel_polygon(Polygon* polygon, Pixel** pixel);
 Pixel** create_shape_to_pixel(Shape * shape);
-void delete_pixel_shape(int k, Area * area);
+void delete_pixel_shape(int k, Area * area, int* current_ids);
 
 #endif //PROJECT_C2_PIXEL_H

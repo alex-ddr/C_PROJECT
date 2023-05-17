@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "pixel.h"
 #include "math.h"
-#include "../id/id.h"
 
 Pixel *create_pixel(int px, int py) {
     Pixel *pixel = (Pixel *)malloc(sizeof(Pixel));
@@ -17,8 +16,14 @@ Pixel *create_pixel(int px, int py) {
     return pixel;
 }
 
-void delete_pixel(Pixel *pixel) {
+void delete_pixel(Pixel *pixel)
+{
+    if (pixel == NULL) {
+        printf("Error: Invalid pixel\n");
+        return;
+    }
     free(pixel);
+    pixel = NULL;
 }
 
 void pixel_point(Shape* shape, Pixel** pixel) {
@@ -52,7 +57,7 @@ void pixel_line(Line * line, Pixel ** pixel) {
 int pixel_circle(Circle* shape, Pixel*** pixel){
     int p_x = shape->center->pos_x, p_y = shape->center->pos_y;
     int radius = shape->radius;
-    int max_pixels = (int)(2 * M_PI * radius) * 2; // Estimation du nombre maximum de pixels nécessaires
+    int max_pixels = (int)(2 * M_PI * radius) * 2;
 
     *pixel = (Pixel **) malloc(max_pixels * sizeof(Pixel *));
     int i = -1;
@@ -159,7 +164,6 @@ void pixel_polygon(Polygon* polygon, Pixel** pixel) {
 
         free(pixels_segment);
         delete_line(line);
-        printf("\n: %d %d :\n", index, i);
     }
 
 }
@@ -222,12 +226,19 @@ Pixel** create_shape_to_pixel(Shape * shape) {
     return pixel;
 }
 
-void delete_pixel_shape(int k, Area *area) {
-    if (area->nb_shape < k)
-        printf("Error invalid id\n");
+void delete_pixel_shape(int k, Area *area, int *current_ids) {
+    int check=0, i=0;
+    while (!check && i<SHAPE_MAX){
+        if (k == current_ids[i]){
+            check = 1;}
+        i++;
+    }
 
+    if (!check)
+        printf("Error : invalid ID");
     else {
-        Shape *current_shape = area->shapes[k - 1];
+        current_ids[k-1]= 0;
+        Shape *current_shape =area->shapes[k - 1];
         Pixel **pixel_list = create_shape_to_pixel(current_shape);
         for (int j = 0; pixel_list[j] != NULL; j++) {
             Pixel *current_pixel = pixel_list[j];
@@ -239,13 +250,7 @@ void delete_pixel_shape(int k, Area *area) {
             }
             delete_pixel(current_pixel);
         }
-
-        // Remove the shape from the shape list and update the count
-        for (int i = k - 1; i < area->nb_shape - 1; i++) {
-            area->shapes[i] = area->shapes[i + 1]; // c'est à l'origine du probleme quand tu supprimes deux fois avec le meme id mais si tu l'enleves c n'importe quoi
-        }
-        // area->nb_shape--; si tu le laisses tu peux pas supprimer un id  >  a celui que t'as deja supprimé
-        // Free memory allocated to the shape
+        area->nb_shape--;
         delete_shape(current_shape);
     }
 }

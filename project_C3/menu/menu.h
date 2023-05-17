@@ -4,6 +4,6 @@
 #include "../area/area.h"
 
 void read_input(char* input);
-int compare_string(char* str, Area* draw_zone, LIST * l);
+int compare_string(char* str, Area* draw_zone, LIST * l, int * current_ids);
 
 #endif //PROJECT_C2_MENU_H

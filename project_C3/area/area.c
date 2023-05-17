@@ -40,7 +40,7 @@ Area* create_area(unsigned int width, unsigned int height) {
     return area;
 }
 
-void add_shape_to_area(Area* area, Shape* shape) {
+void add_shape_to_area(Area* area, Shape* shape, int * current_ids) {
     if (shape == NULL) {
         printf("Error: Invalid shape.\n");
         return;
@@ -49,6 +49,7 @@ void add_shape_to_area(Area* area, Shape* shape) {
     if (area->nb_shape < SHAPE_MAX) {
         area->shapes[area->nb_shape] = shape;
         area->nb_shape += 1;
+        current_ids[shape->id-1] = shape->id;
     } else {
         printf("Error: Maximum number of shapes reached.\n");
     }
@@ -115,13 +116,12 @@ void print_area(Area* area) {
         printf("Error: Area is NULL.\n");
         return;
     }
-    printf("\n");
     for (unsigned int i = 0; i < area->height; i++) {
         for (unsigned int j = 0; j < area->width; j++) {
             if (area->mat[i][j] == 1) {
-                printf("%c", 35);
+                printf("%c ", 35);
             } else {
-                printf("%c", 46);
+                printf("%c ", 46);
             }
         }
         printf("\n");

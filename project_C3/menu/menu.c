@@ -12,7 +12,7 @@ void read_input(char* input) {
     input[strcspn(input, "\n")] = '\0';
 }
 
-int compare_string(char* str, Area* draw_zone, LIST * l){
+int compare_string(char* str, Area* draw_zone, LIST * l, int * current_ids){
     int x, y, z, w, k;
     if (strcmp(str, "clear") == 0) {
         system("cls");
@@ -53,33 +53,33 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
 
     else if (sscanf(str, "point %d %d", &x, &y) == 2) {
         Shape* shape = create_point_shape(l, x, y);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (sscanf(str, "line %d %d %d %d", &x, &y, &z, &w) == 4) {
         Shape* shape = create_line_shape(l, x, y, z, w);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (sscanf(str, "circle %d %d %d", &x, &y, &z) == 3) {
         Shape* shape = create_circle_shape(l, x, y, z);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (sscanf(str, "square %d %d %d", &x, &y, &z) == 3) {
         Shape* shape = create_square_shape(l, x, y, z);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (sscanf(str, "rectangle %d %d %d %d", &x, &y, &z, &w) == 4) {
         Shape* shape = create_rectangle_shape(l, x, y, z, w);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (sscanf(str, "polygon %d", &x) == 1) {
 
         Shape* shape = create_polygon_shape(l, x);
-        add_shape_to_area(draw_zone, shape);
+        add_shape_to_area(draw_zone, shape, current_ids);
     }
 
     else if (strcmp(str, "erase") == 0) {
@@ -90,7 +90,7 @@ int compare_string(char* str, Area* draw_zone, LIST * l){
 
     else if (sscanf(str, "delete %d", &k) == 1){
         if (k > 0) {
-            delete_pixel_shape(k, draw_zone);
+            delete_pixel_shape(k, draw_zone, current_ids);
             delete_node(l, k);
         }
         else printf("Error invalid id\n");
